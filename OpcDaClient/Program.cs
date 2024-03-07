@@ -68,6 +68,22 @@ namespace OpcDaClient
                 Console.WriteLine(item.ItemName + ": " + item.ResultID.Name.Name);
             }
 
+            //Browse Items
+            Opc.Da.BrowsePosition position = null;
+            Opc.Da.BrowseFilters filters = new Opc.Da.BrowseFilters();
+            Opc.Da.BrowseElement[] elements = opcServer.Browse(null, filters, out position);
+            foreach (var item in elements)
+            {
+                if (item.HasChildren)
+                {
+                    Opc.ItemIdentifier id = new Opc.ItemIdentifier(item.Name);
+                    Opc.Da.BrowseElement[] children = opcServer.Browse(id, filters, out position);
+                }
+            }
+            //Browse all items
+            BrowsAllElement("", ref opcServer);
+
+
             //Clean up connection
             //remove items
             subscription.RemoveItems(subscription.Items);
@@ -76,6 +92,39 @@ namespace OpcDaClient
             opcServer.Dispose();
             subscription.Dispose();
             Console.ReadLine();
+        }
+
+        private static void BrowsAllElement(string itemName, ref Opc.Da.Server opcServer)
+        {
+            Opc.Da.BrowseFilters filters = new Opc.Da.BrowseFilters();
+            Opc.Da.BrowsePosition position = null;
+            Opc.ItemIdentifier id = new Opc.ItemIdentifier(itemName);
+            Opc.Da.BrowseElement[] children = opcServer.Browse(id, filters, out position);
+            if (children != null)
+            {
+                foreach (var item in children)
+                {
+                    if (item.HasChildren)
+                    {
+                        if (string.IsNullOrEmpty(itemName))
+                        {
+                            Console.WriteLine(item.Name);
+                            BrowsAllElement(item.Name, ref opcServer);
+
+                        }
+                        else
+                        {
+                            Console.WriteLine(itemName + "." + item.Name);
+                            BrowsAllElement(itemName + "." + item.Name, ref opcServer);
+                        }
+                    }
+                    else
+                    {
+                        //The item you want
+                        Console.WriteLine(itemName + "." + item.Name);
+                    }
+                }
+            }
         }
 
         private static void Subscription_DataChanged(object subscriptionHandle, object requestHandle, Opc.Da.ItemValueResult[] values)
