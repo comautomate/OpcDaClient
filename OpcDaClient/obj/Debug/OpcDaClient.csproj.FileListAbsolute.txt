@@ -1,0 +1,10 @@
+C:\Users\VM\source\repos\OpcDaClient\OpcDaClient\bin\Debug\OpcDaClient.exe.config
+C:\Users\VM\source\repos\OpcDaClient\OpcDaClient\bin\Debug\OpcDaClient.exe
+C:\Users\VM\source\repos\OpcDaClient\OpcDaClient\bin\Debug\OpcDaClient.pdb
+C:\Users\VM\source\repos\OpcDaClient\OpcDaClient\bin\Debug\OpcNetApi.Com.dll
+C:\Users\VM\source\repos\OpcDaClient\OpcDaClient\bin\Debug\OpcNetApi.dll
+C:\Users\VM\source\repos\OpcDaClient\OpcDaClient\obj\Debug\OpcDaClient.csprojAssemblyReference.cache
+C:\Users\VM\source\repos\OpcDaClient\OpcDaClient\obj\Debug\OpcDaClient.csproj.CoreCompileInputs.cache
+C:\Users\VM\source\repos\OpcDaClient\OpcDaClient\obj\Debug\OpcDaClient.csproj.CopyComplete
+C:\Users\VM\source\repos\OpcDaClient\OpcDaClient\obj\Debug\OpcDaClient.exe
+C:\Users\VM\source\repos\OpcDaClient\OpcDaClient\obj\Debug\OpcDaClient.pdb
